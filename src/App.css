@@ -1,38 +1,201 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+}
+
 .App {
+  font-family: sans-serif;
   text-align: center;
+  background: grey;
+  height: 100vh;
+  display: flex;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.navbar {
+  background: #2b2f42;
+  width: 50px;
+  box-shadow: 2px 0 8px 0 rgba(0, 0, 0, 0.2);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.App > .content {
+  background: #fefefe;
+  flex: 1;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.right-sidebar {
+  background: #edf0f5;
+  width: 340px;
+  border-left: #e4e6eb 1px solid;
+}
+
+.box {
+  background: #fff;
+  margin: 15px;
+  border-radius: 4px;
+  box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.05);
+  border: solid 1px #edeff5;
+}
+
+.box > .title {
+  color: #c6c8d8;
+  border-bottom: 1px solid #edeff5;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.box .title .left {
+  font-size: 12px;
+}
+
+.utilization-stat {
   display: flex;
   flex-direction: column;
+  margin: 10px;
+}
+
+.utilization-stat .title {
+  color: #666d7f;
+  font-size: 12px;
+  text-align: left;
+}
+
+.utilization-stat .inner-items {
+  display: flex;
+  padding: 5px 0;
+  justify-content: space-around;
   align-items: center;
+}
+
+.utilization-stat .inner-items .icon-wrapper {
+  width: 20px;
+  padding-right: 10px;
+}
+
+.utilization-stat .inner-items .progress-background {
+  flex: 1;
+  background: #edeff5;
+  height: 2px;
+}
+
+.utilization-stat .inner-items .progress-background .progress-actual {
+  height: 2px;
+}
+
+.utilization-stat .inner-items .amount {
+  padding-left: 10px;
+  font-size: 12px;
+  font-weight: bold;
+  color: #666d7f;
+}
+
+.expand-button {
+  display: none;
+}
+
+.tabs ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  margin-top: 15px;
 }
 
-.App-link {
-  color: #61dafb;
+.tabs ul li {
+  color: #666d7f;
+  border: 1px solid #666d7f;
+  border-right: 0;
+  padding: 5px;
+  cursor: pointer;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.tabs ul li.active {
+  background: #666d7f;
+  color: #fff;
+}
+
+.tabs ul li:last-child {
+  border-right: 1px solid #666d7f;
+}
+
+.tabs ul li:first-child {
+  border-radius: 5px 0 0 5px;
+}
+
+.tabs ul li:last-child {
+  border-radius: 0 5px 5px 0;
+}
+
+@media screen and (max-width: 600px) {
+  .App {
+    flex-direction: column;
   }
-  to {
-    transform: rotate(360deg);
+
+  .navbar {
+    height: 50px;
+    width: 100vw;
+  }
+
+  .right-sidebar {
+    height: 100px;
+    width: 100vw;
+    box-sizing: border-box;
+    position: relative;
+  }
+
+  .right-sidebar.expanded {
+    height: 300px;
+  }
+
+  .right-sidebar.expanded .content {
+    overflow-y: scroll;
+  }
+
+  .right-sidebar .content {
+    overflow: hidden;
+    height: 100%;
+  }
+
+  .right-sidebar .expand-button {
+    display: block;
+    background: #edf0f5;
+    width: 50px;
+    height: 30px;
+    position: absolute;
+    top: -30px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    border-radius: 5px 5px 0px 0px;
+    position: absolute;
+    cursor: pointer;
+  }
+
+  .right-sidebar:after {
+    content: " ";
+    height: 10px;
+    background: #edf0f5;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0px;
+  }
+
+  .right-sidebar.expanded .expand-button:before {
+    transform: rotate(180deg);
+    position: absolute;
+    left: 15px;
+    top: 0px;
+  }
+
+  .right-sidebar .expand-button:before {
+    content: "^";
+    width: 20px;
+    height: 20px;
+    position: relative;
+    top: 10px;
   }
 }
